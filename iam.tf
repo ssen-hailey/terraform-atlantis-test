@@ -1,8 +1,5 @@
-#
-# alias administrator
-#
-resource "aws_iam_role" "atlantis_alias_admin" {
-  name = "atlantis-alias-admin"
+resource "aws_iam_role" "atlantis_seeun_id_admin" {
+  name = "atlantis-seeun-id-admin"
   path = "/"
 
   assume_role_policy = jsonencode({
@@ -23,9 +20,9 @@ resource "aws_iam_role" "atlantis_alias_admin" {
 
 }
 
-resource "aws_iam_role_policy" "atlantis_alias_admin" {
-  name = "atlantis-alias-admin-passrole"
-  role = aws_iam_role.atlantis_alias_admin.id
+resource "aws_iam_role_policy" "atlantis_seeun_id_admin" {
+  name = "atlantis-seeun-id-admin-passrole"
+  role = aws_iam_role.atlantis_seeun_id_admin.id
 
   policy = jsonencode({
     "Statement" : [
@@ -42,8 +39,8 @@ resource "aws_iam_role_policy" "atlantis_alias_admin" {
 
 }
 
-resource "aws_iam_role_policy_attachment" "atlantis_alias_admin" {
-  role       = aws_iam_role.atlantis_alias_admin.id
+resource "aws_iam_role_policy_attachment" "atlantis_seeun_id_admin" {
+  role       = aws_iam_role.atlantis_seeun_id_admin.id
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
 
@@ -54,8 +51,8 @@ data "aws_iam_policy_document" "atlantis_assume_role" {
     ]
 
     resources = [
-      aws_iam_role.atlantis_alias_admin.arn
-   ]
+      aws_iam_role.atlantis_seeun_id_admin.arn
+    ]
   }
 }
 
